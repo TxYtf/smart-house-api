@@ -1,0 +1,1 @@
+This is my Smart House API using AWS
