@@ -1,0 +1,31 @@
+{
+  "name": "smart-house-api",
+  "version": "1.0.0",
+  "description": "API project (for my Smart House project) with AWS Lambda",
+  "homepage": "https://github.com/TxYtf/smart-house-api#readme",
+  "bugs": {
+    "url": "https://github.com/TxYtf/smart-house-api/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TxYtf/smart-house-api.git"
+  },
+  "license": "ISC",
+  "author": "Taras Yavorskyy",
+  "type": "module",
+  "main": "api.mjs",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "deploy": "npm run zip && aws lambda update-function-code --function-name smart-house-api --zip-file fileb://smart-house-api.zip",
+    "zip": "node temp-scripts/zip.js",
+    "check-zip": "powershell \"Expand-Archive smart-house-api.zip -DestinationPath temp-check -Force; Get-ChildItem temp-check -Recurse; Remove-Item temp-check -Recurse -Force\"",
+    "create-function": "aws lambda create-function --function-name smart-house-api --runtime nodejs22.x --role arn:aws:iam::055694273372:role/AWSLambdaBasicExecutionRole --handler api.handler --zip-file fileb://smart-house-api.zip",
+    "test-root": "aws lambda invoke --function-name smart-house-api --payload file://tests/test-root.json --cli-binary-format raw-in-base64-out tests/response.json && node -e \"console.log(JSON.stringify(JSON.parse(require('fs').readFileSync('tests/response.json', 'utf8')), null, 2))\"",
+    "test-pizzas-all": "node ./tests/test-smart-house-devices.mjs get-all",
+    "test-orders-all": "node ./tests/test-smart-houses.mjs get-all"
+  },
+  "dependencies": {
+    "archiver": "^7.0.1",
+    "fs": "^0.0.1-security"
+  }
+}
