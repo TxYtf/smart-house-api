@@ -1,0 +1,86 @@
+{
+    "command": {
+        "bash": "aws apigateway get-resources --rest-api-id ne7yja1gxe"
+    },
+    "response": {
+        "items": [
+            {
+                "id": "84szqp",
+                "parentId": "ko6vpx",
+                "pathPart": "signup",
+                "path": "/auth/signup",
+                "resourceMethods": {
+                    "OPTIONS": {},
+                    "POST": {}
+                }
+            },
+            {
+                "id": "cb12h5",
+                "parentId": "foubbicfdb",
+                "pathPart": "smart-houses",
+                "path": "/smart-houses",
+                "resourceMethods": {
+                    "GET": {},
+                    "OPTIONS": {}
+                }
+            },
+            {
+                "id": "foubbicfdb",
+                "path": "/",
+                "resourceMethods": {
+                    "GET": {},
+                    "OPTIONS": {}
+                }
+            },
+            {
+                "id": "gx8290",
+                "parentId": "cb12h5",
+                "pathPart": "{id}",
+                "path": "/smart-houses/{id}",
+                "resourceMethods": {
+                    "GET": {},
+                    "POST": {},
+                    "PUT": {}
+                }
+            },
+            {
+                "id": "h2b8xf",
+                "parentId": "ko6vpx",
+                "pathPart": "restore",
+                "path": "/auth/restore",
+                "resourceMethods": {
+                    "OPTIONS": {},
+                    "POST": {}
+                }
+            },
+            {
+                "id": "j95fl7",
+                "parentId": "ko6vpx",
+                "pathPart": "login",
+                "path": "/auth/login",
+                "resourceMethods": {
+                    "OPTIONS": {},
+                    "POST": {}
+                }
+            },
+            {
+                "id": "ko6vpx",
+                "parentId": "foubbicfdb",
+                "pathPart": "auth",
+                "path": "/auth",
+                "resourceMethods": {
+                    "OPTIONS": {}
+                }
+            },
+            {
+                "id": "qw0wcd",
+                "parentId": "foubbicfdb",
+                "pathPart": "devices",
+                "path": "/devices",
+                "resourceMethods": {
+                    "OPTIONS": {}
+                }
+            }
+        ]
+    }
+}

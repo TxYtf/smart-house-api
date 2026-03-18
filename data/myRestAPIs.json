@@ -1,0 +1,78 @@
+{
+    "command": {
+        "bash": "aws apigateway get-rest-apis"
+    },
+    "response": {
+        "items": [
+            {
+                "id": "bsgll21h3g",
+                "name": "text-maket-builder-api",
+                "createdDate": "2025-08-01T05:25:52+03:00",
+                "binaryMediaTypes": [
+                    "image/png",
+                    "image/jpg"
+                ],
+                "apiKeySource": "HEADER",
+                "endpointConfiguration": {
+                    "types": [
+                        "REGIONAL"
+                    ],
+                    "ipAddressType": "ipv4"
+                },
+                "disableExecuteApiEndpoint": false,
+                "rootResourceId": "6185tixzhe",
+                "securityPolicy": "TLS_1_0",
+                "apiStatus": "AVAILABLE"
+            },
+            {
+                "id": "ne7yja1gxe",
+                "name": "Smart House REST API",
+                "createdDate": "2026-03-14T13:27:38+02:00",
+                "apiKeySource": "HEADER",
+                "endpointConfiguration": {
+                    "types": [
+                        "REGIONAL"
+                    ],
+                    "ipAddressType": "ipv4"
+                },
+                "disableExecuteApiEndpoint": false,
+                "rootResourceId": "foubbicfdb",
+                "securityPolicy": "SecurityPolicy_TLS13_1_3_2025_09",
+                "endpointAccessMode": "STRICT",
+                "apiStatus": "AVAILABLE"
+            },
+            {
+                "id": "nn2sc6e5c5",
+                "name": "bestobmin-parser-API",
+                "createdDate": "2025-06-11T21:48:07+03:00",
+                "apiKeySource": "HEADER",
+                "endpointConfiguration": {
+                    "types": [
+                        "REGIONAL"
+                    ],
+                    "ipAddressType": "dualstack"
+                },
+                "disableExecuteApiEndpoint": false,
+                "rootResourceId": "zsxhffxn1h",
+                "securityPolicy": "TLS_1_0",
+                "apiStatus": "AVAILABLE"
+            },
+            {
+                "id": "pw4d81vcsb",
+                "name": "PizzaApiManual",
+                "createdDate": "2025-06-04T22:21:57+03:00",
+                "apiKeySource": "HEADER",
+                "endpointConfiguration": {
+                    "types": [
+                        "REGIONAL"
+                    ],
+                    "ipAddressType": "ipv4"
+                },
+                "disableExecuteApiEndpoint": false,
+                "rootResourceId": "38xefqvrb0",
+                "securityPolicy": "TLS_1_0",
+                "apiStatus": "AVAILABLE"
+            }
+        ]
+    }
+}

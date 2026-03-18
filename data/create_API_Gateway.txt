@@ -1,0 +1,50 @@
+Як створювати ресурси і методи до цих ресурсів у моєму REST API Gateway за допомогою терміналу?
+
+Спочатку отримай ID свого API:
+aws apigateway get-rest-apis
+
+Далі отримай ID кореневого ресурсу /:
+aws apigateway get-resources --rest-api-id <api-id>
+
+Створення ресурсу (наприклад /auth):
+aws apigateway create-resource \
+  --rest-api-id <api-id> \
+  --parent-id <root-resource-id> \
+  --path-part auth
+
+Створення дочірнього ресурсу (наприклад /auth/login):
+aws apigateway create-resource \
+  --rest-api-id <api-id> \
+  --parent-id <auth-resource-id> \
+  --path-part login
+
+Створення методу POST для ресурсу:
+aws apigateway put-method \
+  --rest-api-id <api-id> \
+  --resource-id <login-resource-id> \
+  --http-method POST \
+  --authorization-type NONE
+
+Прив'язка Lambda до методу:
+aws apigateway put-integration \
+  --rest-api-id <api-id> \
+  --resource-id <login-resource-id> \
+  --http-method POST \
+  --type AWS_PROXY \
+  --integration-http-method POST \
+  --uri arn:aws:apigateway:<region>:lambda:path/2015-03-31/functions/<lambda-arn>/invocations
+
+Деплой після змін:
+aws apigateway create-deployment \
+  --rest-api-id <api-id> \
+  --stage-name dev
+
+Після цього не забудь надати API Gateway права викликати твою Lambda функцію:
+aws lambda add-permission \
+  --function-name <lambda-function-name> \
+  --statement-id apigateway-invoke \
+  --action lambda:InvokeFunction \
+  --principal apigateway.amazonaws.com \
+  --source-arn arn:aws:execute-api:<region>:<account-id>:<api-id>/*/POST/auth/login
+
+Після виконання цих кроків, твій ресурс /auth/login буде готовий приймати POST запити і викликати відповідну Lambda функцію.

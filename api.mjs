@@ -18,9 +18,9 @@ export async function handler(event) {
   let statusCode = null;
   let body = null;
 
-  const method = event.httpMethod;        // GET, POST, PUT, DELETE
-  const path = event.resource;            // наприклад "/devices" або "/devices/{id}"
-  const pathParams = event.pathParameters; // { id: "2" } якщо URL /devices/2
+  const method = event.httpMethod;          // GET, POST, PUT, DELETE
+  const path = event.resource;              // наприклад "/devices" або "/devices/{id}"
+  const pathParams = event.pathParameters;  // { id: "2" } якщо URL /devices/2
 
   try {
 
@@ -58,15 +58,32 @@ export async function handler(event) {
         break;
 
       // ==========================================
-      // 2) POST /devices, POST /smart-houses
+      // 2) POST /devices, POST /smart-houses, POST /auth/login, POST /auth/signup, POST /auth/restore
       // ==========================================
       case 'POST':
         switch (path) {
           case '/devices':
+            //TODO: реалізувати створення нового пристрою
 
             break;
           case '/smart-houses':
+            //TODO: реалізувати створення нового розумного будинку
 
+            break;
+          case '/auth/login':
+            //TODO: реалізувати логін користувача
+            statusCode = 200;
+            body = JSON.stringify({ token: 'mock-jwt-token', userId: 'mock-user-id' });
+            break;
+          case '/auth/signup':
+            //TODO: реалізувати реєстрацію користувача
+            statusCode = 201;
+            body = JSON.stringify({ message: 'User created successfully' });
+            break;
+          case '/auth/restore':
+            //TODO: реалізувати відновлення паролю
+            statusCode = 200;
+            body = JSON.stringify({ message: 'Password reset instructions sent to your email' });
             break;
           default:
             statusCode = 404;
@@ -80,9 +97,11 @@ export async function handler(event) {
       //      event.resource === "/devices/{id}" під час налаштування в API Gateway
       case 'PUT':
         if (path === '/devices/{id}') {
+          //TODO: реалізувати оновлення пристрою за id
 
         }  else if (path === '/smart-houses/{id}') {
-
+          //TODO: реалізувати оновлення розумного будинку за id
+          
         }
         break;
 
@@ -91,9 +110,11 @@ export async function handler(event) {
       //  ==========================================
       case 'DELETE':
         if (path === '/devices/{id}') {
+          //TODO: реалізувати видалення пристрою за id
 
         } else if (path === '/smart-houses/{id}') {
-
+          //TODO: реалізувати видалення розумного будинку за id 
+          
         }
         break;
 
